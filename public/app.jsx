@@ -5,15 +5,22 @@ var Greeter = React.createClass({
 			message: 'This is from React component.'
 		};
 	},
+	getInitialState() {
+		return{
+			name: this.props.name
+		};
+	},
 	onButtonClick: function(e) {
 		e.preventDefault();
 
 		var name = this.refs.name.value;
 
-		console.log(name);
+		this.setState({
+			name: name
+		});
 	},
 	render: function() {
-		var name = this.props.name;
+		var name = this.state.name;
 		var message = this.props.message;
 
 		return (
