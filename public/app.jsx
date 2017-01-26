@@ -1,47 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var GreeterMessage = React.createClass({
-	render: function() {
-		var name = this.props.name;
-		var message = this.props.message;
-
-		return (
-			<div>
-				<h1>Some {name}!</h1>
-				<p>{message}</p>
-			</div>
-		);
-	}
-});
-
-var GreeterForm = React.createClass({
-	onFormSubmit: function(e) {
-		e.preventDefault();
-
-		var name = this.refs.name.value;
-		var message = this.refs.message.value;
-
-		if (name.length > 0) {
-			this.refs.name.value = '';
-			this.props.onNewName(name);
-		};
-
-		if (message.length > 0) {
-			this.refs.message.value = '';
-			this.props.onNewMessage(message);
-		};
-	},
-	render: function() {
-		return (
-			<form onSubmit={this.onFormSubmit}>
-				<input type="text" ref="name"/>
-				<textarea ref="message" placeholder="Enter message"></textarea>
-				<button>Submit</button>
-			</form>
-		);
-	},
-});
+var GreeterMessage = require('./components/GreeterMessage');
+var GreeterForm = require('./components/GreeterForm');
 
 var Greeter = React.createClass({
 	getDefaultProps: function() {
