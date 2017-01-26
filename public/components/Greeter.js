@@ -1,5 +1,5 @@
 function greeter() {
-	document.write('From greeter moufid');
+	document.write('From greeter component');
 }
 
 module.exports = greeter;
