@@ -51,7 +51,7 @@
 	var Greeter = __webpack_require__(178);
 
 	var firstName = 'Moufid';
-	var message = 'Success!';
+	var message = 'This is a new message!';
 
 	ReactDOM.render(React.createElement(Greeter, { name: firstName, message: message }), document.getElementById('app'));
 
