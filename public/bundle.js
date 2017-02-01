@@ -26628,27 +26628,43 @@
 
 		getInitialState: function getInitialState() {
 			return {
-				city: 'Miami',
-				temp: 30
+				isLoading: false
 			};
 		},
 		handleSearch: function handleSearch(city) {
 			var that = this;
 
+			this.setState({ isLoading: true });
+
 			openWeatherMap.getTemp(city).then(function (temp) {
 				that.setState({
 					city: city,
-					temp: temp
+					temp: temp,
+					isLoading: false
 				});
 			}, function (errorMessage) {
+				that.setState({ isLoading: false });
 				alert(errorMessage);
 			});
 		},
 		render: function render() {
 			var _state = this.state,
+			    isLoading = _state.isLoading,
 			    temp = _state.temp,
 			    city = _state.city;
 
+
+			function renderMessage() {
+				if (isLoading) {
+					return React.createElement(
+						'h3',
+						null,
+						'Fetching weather...'
+					);
+				} else if (temp && city) {
+					return React.createElement(WeatherMessage, { temp: temp, city: city });
+				}
+			}
 
 			return React.createElement(
 				'div',
@@ -26659,7 +26675,7 @@
 					'Weather Component'
 				),
 				React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-				React.createElement(WeatherMessage, { temp: temp, city: city })
+				renderMessage()
 			);
 		}
 	});
@@ -26755,12 +26771,12 @@
 
 			return axios.get(requestUrl).then(function (res) {
 				if (res.data.cod && res.data.message) {
-					throw new Error(res.data.message);
+					throw new Error('City not found.');
 				} else {
 					return res.data.main.temp;
 				}
 			}, function (res) {
-				throw new Error(res.data.message);
+				throw new Error('City not found.');
 			});
 		}
 	};
