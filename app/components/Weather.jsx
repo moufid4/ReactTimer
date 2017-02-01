@@ -11,7 +11,7 @@ var Weather = React.createClass({
 	},
 	handleSearch: function(city) {
 		var that = this;
-
+		
 		this.setState({isLoading: true});
 
 		openWeatherMap.getTemp(city).then(function (temp) {
