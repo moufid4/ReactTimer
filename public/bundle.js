@@ -26625,7 +26625,25 @@
 	var Weather = React.createClass({
 		displayName: 'Weather',
 
+		getInitialState: function getInitialState() {
+			return {
+				city: 'Miami',
+				temp: 30
+			};
+		},
+		handleSearch: function handleSearch(city) {
+
+			this.setState({
+				city: city,
+				temp: 23
+			});
+		},
 		render: function render() {
+			var _state = this.state,
+			    temp = _state.temp,
+			    city = _state.city;
+
+
 			return React.createElement(
 				'div',
 				null,
@@ -26634,8 +26652,8 @@
 					null,
 					'Weather Component'
 				),
-				React.createElement(WeatherForm, null),
-				React.createElement(WeatherMessage, null)
+				React.createElement(WeatherForm, { onSearch: this.handleSearch }),
+				React.createElement(WeatherMessage, { temp: temp, city: city })
 			);
 		}
 	});
@@ -26646,25 +26664,35 @@
 /* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
 
 	var WeatherForm = React.createClass({
-		displayName: "WeatherForm",
+		displayName: 'WeatherForm',
 
+		onFormSubmit: function onFormSubmit(e) {
+			e.preventDefault();
+
+			var city = this.refs.city.value;
+			// console.log('city', city)
+			if (city.length > 0) {
+				this.refs.city.value = '';
+				this.props.onSearch(city);
+			}
+		},
 		render: function render() {
 			return React.createElement(
-				"div",
+				'div',
 				null,
 				React.createElement(
-					"form",
-					null,
-					React.createElement("input", { type: "text" }),
+					'form',
+					{ onSubmit: this.onFormSubmit },
+					React.createElement('input', { type: 'text', ref: 'city' }),
 					React.createElement(
-						"button",
+						'button',
 						null,
-						"Get Weather"
+						'Get Weather'
 					)
 				)
 			);
@@ -26685,10 +26713,19 @@
 		displayName: 'WeatherMessage',
 
 		render: function render() {
+			var _props = this.props,
+			    temp = _props.temp,
+			    city = _props.city;
+			// console.log(city)
+
 			return React.createElement(
 				'h3',
 				null,
-				'It is 10 in Toronto.'
+				'It is ',
+				temp,
+				' in ',
+				city,
+				'.'
 			);
 		}
 	});
