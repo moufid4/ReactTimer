@@ -12,7 +12,7 @@ var About = (props) => {
 	return (
 		<div>
 			<h1 className="text-center">About</h1>
-			<p>This is a weather application buit on React.</p>
+			<p className="text-center">This is a weather application buit on React.</p>
 		</div>
 	)
 };
