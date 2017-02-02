@@ -10,7 +10,10 @@ var React = require('react');
 
 var About = (props) => {
 	return (
-		<h3>About Component</h3>
+		<div>
+			<h1 className="text-center">About</h1>
+			<p>This is a weather application buit on React.</p>
+		</div>
 	)
 };
 
