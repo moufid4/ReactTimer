@@ -14,14 +14,14 @@ var Navigation = React.createClass({
 				   				<IndexLink to="/" activeClassName="active-link">Timer</IndexLink>
 				   			</li>
 				   			<li>
-				   				<IndexLink to="/" activeClassName="active-link">Countdown</IndexLink>
+				   				<Link to="/" activeClassName="active-link">Countdown</Link>
 				   			</li>
 				   		</ul>
 				   </div>
 				<div className="top-bar-right">
 					<ul className="menu">
 						<li className="menu-text">
-							Created by Moufid
+							Created by <a href="https://github.com/moufid4" target="_blank">Moufid</a>
 						</li>
 					</ul>
 				</div>
