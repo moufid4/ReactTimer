@@ -1,7 +1,7 @@
 var React = require('react');
 
 var ErrorModal = React.createClass({
-	getDefaultProps: function() {
+	getDefaultProps: function(title) {
 		return (
 			title: 'Error'
 		);
