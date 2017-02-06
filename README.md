@@ -1,1 +1,1 @@
-# HelloReact
+# Boilerplate React App
