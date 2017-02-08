@@ -6,7 +6,7 @@ var Controls = React.createClass({
 	},
 	render: function () {
 		var {countdownStatus} = this.props;
-
+		
 		var renderStartStopButton = () => {
 			if (countdownStatus === 'started') {
 				return <button className="button secondary">Pause</button>
@@ -17,7 +17,7 @@ var Controls = React.createClass({
 		
 		return (
 			<div className="controls">
-				{renderStartStopButton}
+				{renderStartStopButton()}
 				<button className="button alert hollow">Clear</button>		
 			</div>
 		)
