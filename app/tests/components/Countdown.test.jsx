@@ -24,5 +24,15 @@ describe('Countdown', () => {
 				done();
 			}, 1001);
 		});
+
+		it('should not be negative', (done) => {
+			var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+			countdown.handleSetCountdown(1);
+
+			setTimeout(() => {
+				expect(countdown.state.count).toBe(0);
+				done();
+			}, 3001);
+		});
 	});
 });
