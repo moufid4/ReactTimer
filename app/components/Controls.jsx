@@ -20,7 +20,6 @@ var Controls = React.createClass({
 				{renderStartStopButton}
 				<button className="button alert hollow">Clear</button>		
 			</div>
-		}
 		)
 	}
 });
