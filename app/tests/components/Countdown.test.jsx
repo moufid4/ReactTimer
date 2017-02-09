@@ -42,7 +42,19 @@ describe('Countdown', () => {
 
 			setTimeout(() => {
 				expect(countdown.state.count).toBe(3);
-				expect(countdown.state.countdownStatus).toBe('paused')
+				expect(countdown.state.countdownStatus).toBe('paused');
+				done();
+			}, 1001);
+		});
+
+		it('should reset count on stopped status', (done) => {
+			var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+			countdown.handleSetCountdown(1);
+			countdown.handleStatusChange('stopped');
+
+			setTimeout(() => {
+				expect(countdown.state.count).toBe(0);
+				expect(countdown.state.countdownStatus).toBe('stopped');
 				done();
 			}, 1001);
 		});
